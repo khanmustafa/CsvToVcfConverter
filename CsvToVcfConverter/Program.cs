@@ -29,7 +29,4 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Map health check endpoint - simple 200 OK response for Railway
-app.MapGet("/health", () => Results.Ok());
-
 app.Run();
