@@ -18,7 +18,6 @@ ENV ASPNETCORE_ENVIRONMENT=Production
 # If $PORT is not set, fall back to 80
 ENV PORT=80
 EXPOSE 80
-
-# Use shell form to expand $PORT at container runtime so the app listens
-# on the port Railway expects (via the PORT env var).
-ENTRYPOINT ["/bin/sh","-c","exec dotnet CsvToVcfConverter.dll --urls http://0.0.0.0:${PORT}"]
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+ENTRYPOINT ["/start.sh"]
