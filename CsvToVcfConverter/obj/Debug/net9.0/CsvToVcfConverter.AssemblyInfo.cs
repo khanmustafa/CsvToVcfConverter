@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CsvToVcfConverter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f5a36ab5f8bed9b251d56d6e411b025d681054f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c275254faf595549413336ecc5e8fbf158655eb2")]
 [assembly: System.Reflection.AssemblyProductAttribute("CsvToVcfConverter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CsvToVcfConverter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
