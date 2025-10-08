@@ -1,0 +1,231 @@
+@model ColumnSelectionViewModel
+@{
+    ViewData["Title"] = "Select Contact Columns - CSV to VCF Converter";
+    ViewData["Description"] = "Choose which columns contain contact names and phone numbers for accurate CSV to VCF conversion.";
+}
+
+<div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12">
+        <!-- Progress Bar -->
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center">
+                    <div class="progress flex-grow-1 me-3" style="height: 8px;">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span class="text-muted small">Step 2 of 3</span>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <small class="text-success"><i class="bi bi-check-circle-fill"></i> File Uploaded</small>
+                    <small class="text-primary"><i class="bi bi-arrow-right"></i> Select Columns</small>
+                    <small class="text-muted">Convert & Download</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-primary text-white py-3">
+                <h2 class="card-title mb-0 text-center">
+                    <i class="bi bi-columns-gap me-2"></i>Select Your Data Columns
+                </h2>
+            </div>
+            <div class="card-body p-4">
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="bi bi-exclamation-triangle me-2"></i>@TempData["Error"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                <!-- File Info -->
+                <div class="alert alert-info border-0 mb-4">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-check-fill me-3 fs-4"></i>
+                        <div>
+                            <h6 class="alert-heading mb-1">File Analysis Complete</h6>
+                            <p class="mb-1"><strong>File:</strong> @Model.FileName</p>
+                            <p class="mb-0"><strong>Columns detected:</strong> @Model.AvailableColumns.Count columns found</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success border-0 mb-4">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-magic me-3 fs-4"></i>
+                        <div>
+                            <h6 class="alert-heading mb-1">Smart Detection Active</h6>
+                            <p class="mb-0 small">
+                                We've automatically pre-selected likely columns based on common naming patterns. 
+                                Please verify and adjust if needed.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <form asp-action="ConvertToVcf" method="post" class="needs-validation" novalidate>
+                    <input type="hidden" asp-for="TempFilePath" />
+                    <input type="hidden" asp-for="FileName" />
+                    
+                    <div class="row">
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100 border-primary">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="card-title mb-0">
+                                        <i class="bi bi-person-fill me-2"></i>Contact Name Column
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <label for="SelectedNameColumn" class="form-label fw-bold">
+                                        Choose the column containing contact names
+                                    </label>
+                                    <select class="form-select form-select-lg" asp-for="SelectedNameColumn" required>
+                                        <option value="">-- Select Name Column --</option>
+                                        @foreach (var column in Model.AvailableColumns)
+                                        {
+                                            <option value="@column">@column</option>
+                                        }
+                                    </select>
+                                    <div class="form-text">
+                                        <i class="bi bi-info-circle me-1"></i>Examples: "Name", "Full Name", "Contact Name"
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please select a name column.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100 border-success">
+                                <div class="card-header bg-success text-white">
+                                    <h5 class="card-title mb-0">
+                                        <i class="bi bi-telephone-fill me-2"></i>Phone Number Column
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <label for="SelectedPhoneColumn" class="form-label fw-bold">
+                                        Choose the column containing phone numbers
+                                    </label>
+                                    <select class="form-select form-select-lg" asp-for="SelectedPhoneColumn" required>
+                                        <option value="">-- Select Phone Column --</option>
+                                        @foreach (var column in Model.AvailableColumns)
+                                        {
+                                            <option value="@column">@column</option>
+                                        }
+                                    </select>
+                                    <div class="form-text">
+                                        <i class="bi bi-info-circle me-1"></i>Examples: "Phone", "Mobile", "WhatsApp No."
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please select a phone column.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex gap-3 justify-content-between align-items-center mb-4">
+                        <a href="@Url.Action("Index")" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-arrow-left me-2"></i>Back to Upload
+                        </a>
+                        <button type="submit" class="btn btn-success btn-lg px-5">
+                            <i class="bi bi-arrow-repeat me-2"></i>Convert to VCF
+                            <span class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Available Columns Display -->
+                <div class="card bg-light border-0">
+                    <div class="card-header bg-transparent">
+                        <h6 class="card-title mb-0">
+                            <i class="bi bi-list-columns me-2"></i>All Available Columns (@Model.AvailableColumns.Count)
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2">
+                            @foreach (var column in Model.AvailableColumns)
+                            {
+                                <span class="badge bg-secondary fs-6 py-2 px-3">@column</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Form validation and auto-detection
+(function() {
+    'use strict';
+    
+    window.addEventListener('load', function() {
+        // Form validation
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    // Show loading state
+                    const button = form.querySelector('button[type="submit"]');
+                    const spinner = button.querySelector('.spinner-border');
+                    if (button && spinner) {
+                        button.disabled = true;
+                        spinner.classList.remove('d-none');
+                    }
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+        
+        // Auto-suggest columns based on common patterns
+        const nameSelect = document.getElementById('SelectedNameColumn');
+        const phoneSelect = document.getElementById('SelectedPhoneColumn');
+        
+        // Auto-select name column if found
+        const namePatterns = ['formatted name', 'name', 'full name', 'contact name', 'first name', 'last name'];
+        for (let option of nameSelect.options) {
+            if (namePatterns.some(pattern => option.value.toLowerCase().includes(pattern))) {
+                option.selected = true;
+                nameSelect.classList.add('border-success');
+                break;
+            }
+        }
+        
+        // Auto-select phone column if found
+        const phonePatterns = ['whatsapp', 'phone', 'mobile', 'cell', 'contact number', 'telephone'];
+        for (let option of phoneSelect.options) {
+            if (phonePatterns.some(pattern => option.value.toLowerCase().includes(pattern))) {
+                option.selected = true;
+                phoneSelect.classList.add('border-success');
+                break;
+            }
+        }
+        
+        // Add visual feedback for selections
+        nameSelect.addEventListener('change', function() {
+            if (this.value) {
+                this.classList.add('border-success');
+                this.classList.remove('border-danger');
+            } else {
+                this.classList.remove('border-success');
+            }
+        });
+        
+        phoneSelect.addEventListener('change', function() {
+            if (this.value) {
+                this.classList.add('border-success');
+                this.classList.remove('border-danger');
+            } else {
+                this.classList.remove('border-success');
+            }
+        });
+    }, false);
+})();
+</script>

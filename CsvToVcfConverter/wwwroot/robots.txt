@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /lib/
+Disallow: *.json
+
+Sitemap: https://csvtovcf.com/sitemap.xml
+
+# Allow specific search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
