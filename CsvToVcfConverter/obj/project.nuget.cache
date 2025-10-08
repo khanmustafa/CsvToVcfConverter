@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "EQlpEZ3jHps=",
-  "success": false,
+  "dgSpecHash": "5ncphKmPm9Q=",
+  "success": true,
   "projectFilePath": "C:\\Users\\khanm\\Downloads\\csvToVcard\\CsvToVcfConverter\\CsvToVcfConverter.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\khanm\\.nuget\\packages\\aspnetcore.healthchecks.ui.client\\6.0.5\\aspnetcore.healthchecks.ui.client.6.0.5.nupkg.sha512",
@@ -21,14 +21,14 @@
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.configuration.json\\5.0.0\\microsoft.extensions.configuration.json.5.0.0.nupkg.sha512",
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks\\6.0.0\\microsoft.extensions.diagnostics.healthchecks.6.0.0.nupkg.sha512",
-    "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks.abstractions\\6.0.0\\microsoft.extensions.diagnostics.healthchecks.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks\\6.0.7\\microsoft.extensions.diagnostics.healthchecks.6.0.7.nupkg.sha512",
+    "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks.abstractions\\6.0.7\\microsoft.extensions.diagnostics.healthchecks.abstractions.6.0.7.nupkg.sha512",
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\6.0.0\\microsoft.extensions.fileproviders.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\5.0.0\\microsoft.extensions.fileproviders.physical.5.0.0.nupkg.sha512",
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\5.0.0\\microsoft.extensions.filesystemglobbing.5.0.0.nupkg.sha512",
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\6.0.0\\microsoft.extensions.hosting.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.logging\\6.0.0\\microsoft.extensions.logging.6.0.0.nupkg.sha512",
-    "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.1\\microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.io.recyclablememorystream\\2.2.0\\microsoft.io.recyclablememorystream.2.2.0.nupkg.sha512",
@@ -49,17 +49,5 @@
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
     "C:\\Users\\khanm\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Warning As Error: Detected package downgrade: Microsoft.Extensions.Diagnostics.HealthChecks from 6.0.7 to 6.0.0. Reference the package directly from the project to select a different version. \r\n CsvToVcfConverter -> AspNetCore.HealthChecks.UI.Client 6.0.5 -> Microsoft.Extensions.Diagnostics.HealthChecks (>= 6.0.7) \r\n CsvToVcfConverter -> Microsoft.Extensions.Diagnostics.HealthChecks (>= 6.0.0)",
-      "projectPath": "C:\\Users\\khanm\\Downloads\\csvToVcard\\CsvToVcfConverter\\CsvToVcfConverter.csproj",
-      "filePath": "C:\\Users\\khanm\\Downloads\\csvToVcard\\CsvToVcfConverter\\CsvToVcfConverter.csproj",
-      "libraryId": "Microsoft.Extensions.Diagnostics.HealthChecks",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }
