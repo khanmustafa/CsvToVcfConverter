@@ -11,6 +11,11 @@ builder.Services.AddScoped<FileStorageService>();
 
 var app = builder.Build();
 
+// Log important startup information to aid platform diagnostics
+var portEnv = Environment.GetEnvironmentVariable("PORT") ?? "(not set)";
+Console.WriteLine($"[Startup] PORT env: {portEnv}");
+Console.WriteLine($"[Startup] Environment: {app.Environment.EnvironmentName}");
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
