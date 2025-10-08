@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Learnings\\csvToVcard\\CsvToVcfConverter\\CsvToVcfConverter.csproj": {}
+    "C:\\Users\\khanm\\Downloads\\csvToVcard\\CsvToVcfConverter\\CsvToVcfConverter.csproj": {}
   },
   "projects": {
-    "d:\\Learnings\\csvToVcard\\CsvToVcfConverter\\CsvToVcfConverter.csproj": {
+    "C:\\Users\\khanm\\Downloads\\csvToVcard\\CsvToVcfConverter\\CsvToVcfConverter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Learnings\\csvToVcard\\CsvToVcfConverter\\CsvToVcfConverter.csproj",
+        "projectUniqueName": "C:\\Users\\khanm\\Downloads\\csvToVcard\\CsvToVcfConverter\\CsvToVcfConverter.csproj",
         "projectName": "CsvToVcfConverter",
-        "projectPath": "d:\\Learnings\\csvToVcard\\CsvToVcfConverter\\CsvToVcfConverter.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "d:\\Learnings\\csvToVcard\\CsvToVcfConverter\\obj\\",
+        "projectPath": "C:\\Users\\khanm\\Downloads\\csvToVcard\\CsvToVcfConverter\\CsvToVcfConverter.csproj",
+        "packagesPath": "C:\\Users\\khanm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\khanm\\Downloads\\csvToVcard\\CsvToVcfConverter\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\khanm\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -78,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
