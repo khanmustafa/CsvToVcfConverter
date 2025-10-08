@@ -1,6 +1,4 @@
 using CsvToVcfConverter.Services;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using HealthChecks.UI.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +8,6 @@ builder.Services.AddScoped<CsvService>();
 builder.Services.AddScoped<ExcelService>();
 builder.Services.AddScoped<VCardService>();
 builder.Services.AddScoped<FileStorageService>();
-
-// Add health checks
-builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
@@ -34,10 +29,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Map health check endpoint
-app.MapHealthChecks("/health", new HealthCheckOptions
-{
-    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-});
+// Map health check endpoint - simple 200 OK response for Railway
+app.MapGet("/health", () => Results.Ok());
 
 app.Run();
