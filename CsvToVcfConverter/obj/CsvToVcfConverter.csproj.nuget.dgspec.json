@@ -45,10 +45,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "AspNetCore.HealthChecks.UI.Client": {
-              "target": "Package",
-              "version": "[6.0.5, )"
-            },
             "CsvHelper": {
               "target": "Package",
               "version": "[27.2.1, )"
@@ -56,10 +52,6 @@
             "EPPlus": {
               "target": "Package",
               "version": "[6.0.8, )"
-            },
-            "Microsoft.Extensions.Diagnostics.HealthChecks": {
-              "target": "Package",
-              "version": "[6.0.7, )"
             }
           },
           "imports": [
