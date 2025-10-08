@@ -14,6 +14,7 @@
         "outputPath": "C:\\Users\\khanm\\Downloads\\csvToVcard\\CsvToVcfConverter\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "C:\\Users\\khanm\\Downloads\\csvToVcard\\NuGet.Config",
           "C:\\Users\\khanm\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -46,19 +47,11 @@
           "dependencies": {
             "CsvHelper": {
               "target": "Package",
-              "version": "[30.0.1, )"
+              "version": "[27.2.1, )"
             },
             "EPPlus": {
               "target": "Package",
-              "version": "[6.2.10, )"
-            },
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
-              "target": "Package",
-              "version": "[6.0.7, )"
-            },
-            "System.Text.Json": {
-              "target": "Package",
-              "version": "[6.0.7, )"
+              "version": "[6.0.8, )"
             }
           },
           "imports": [
