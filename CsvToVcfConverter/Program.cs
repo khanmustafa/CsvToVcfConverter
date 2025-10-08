@@ -29,10 +29,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
 }
-// Always-available lightweight health endpoint for platform probes
-app.MapGet("/health", () => Results.Text("OK", "text/plain"))
-   .WithMetadata(new Microsoft.AspNetCore.Authorization.AllowAnonymousAttribute());
-app.MapMethods("/health", new[] { "HEAD" }, () => Results.Text(string.Empty)).WithMetadata(new Microsoft.AspNetCore.Authorization.AllowAnonymousAttribute());
+// Health endpoint is provided by `HealthController` to avoid duplicate route mappings.
 app.UseStaticFiles();
 app.UseRouting();
 
