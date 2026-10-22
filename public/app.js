@@ -7,7 +7,7 @@ function status(message, error = false) {
 }
 function updatePreview() {
   const name = Number($('name-column').value), phone = Number($('phone-column').value);
-  contacts = ContactConverter.contactsFromRows(rows, name, phone);
+  contacts = ContactConverter.contactsFromRows(rows, name, phone, $('name-prefix').value, $('name-suffix').value);
   $('preview').replaceChildren();
   for (const contact of contacts.slice(0, 5)) {
     const row = document.createElement('tr');
@@ -62,6 +62,7 @@ async function loadFile(file) {
 }
 $('file').addEventListener('change', event => { loadFile(event.target.files[0]); event.target.value = ''; });
 for (const id of ['name-column', 'phone-column']) $(id).addEventListener('change', updatePreview);
+for (const id of ['name-prefix', 'name-suffix']) $(id).addEventListener('input', updatePreview);
 $('sheet').addEventListener('change', () => {
   try { selectSheet(); status(`${filename} · Read locally. Review your columns below.`); }
   catch (error) { $('mapping').hidden = false; rows = []; updatePreview(); status(error.message, true); }

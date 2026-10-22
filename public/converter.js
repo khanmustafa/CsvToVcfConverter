@@ -2,10 +2,11 @@
 (function (root) {
   'use strict';
   const text = value => String(value ?? '').trim();
-  function contactsFromRows(rows, nameIndex, phoneIndex) {
+  function contactsFromRows(rows, nameIndex, phoneIndex, prefix = '', suffix = '') {
     if (nameIndex < 0 || phoneIndex < 0 || nameIndex === phoneIndex) return [];
     return rows.map(row => ({ name: text(row[nameIndex]), phone: text(row[phoneIndex]) }))
-      .filter(contact => contact.name && contact.phone);
+      .filter(contact => contact.name && contact.phone)
+      .map(contact => ({ ...contact, name: [text(prefix), contact.name, text(suffix)].filter(Boolean).join(' ') }));
   }
   function escapeText(value) {
     return text(value).replace(/\\/g, '\\\\').replace(/\r\n|\r|\n/g, '\\n').replace(/;/g, '\\;').replace(/,/g, '\\,');

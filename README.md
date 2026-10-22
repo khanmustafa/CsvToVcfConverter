@@ -8,6 +8,7 @@ A static website that converts CSV and Excel contact files into vCard 3.0 (`.vcf
 - Worksheet selection for Excel workbooks
 - Automatic suggestions and manual selection for name and phone columns
 - Preview and contact count; rows missing a name or phone are skipped
+- Optional name prefix and suffix, applied to every exported contact with a live preview
 - UTF-8 vCard downloads with escaped fields and folded lines
 - Responsive layout and keyboard-accessible controls
 - Files are read in browser memory, never uploaded or persisted by the site

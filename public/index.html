@@ -21,6 +21,8 @@
       <div id="mapping" hidden>
         <div class="field" id="sheet-field" hidden><label for="sheet">Worksheet</label><select id="sheet"></select></div>
         <div class="fields"><div class="field"><label for="name-column">Contact name column</label><select id="name-column"></select></div><div class="field"><label for="phone-column">Phone number column</label><select id="phone-column"></select></div></div>
+        <div class="fields"><div class="field"><label for="name-prefix">Name prefix (optional)</label><input id="name-prefix" type="text" placeholder="e.g. Team" aria-describedby="name-options-help"></div><div class="field"><label for="name-suffix">Name suffix (optional)</label><input id="name-suffix" type="text" placeholder="e.g. Office" aria-describedby="name-options-help"></div></div>
+        <p id="name-options-help" class="hint">Added to every contact name, separated by spaces. Leave blank to keep original names.</p>
         <div class="preview-heading"><h3>Contact preview</h3><span id="count"></span></div>
         <div class="table-wrap"><table><thead><tr><th>Name</th><th>Phone number</th></tr></thead><tbody id="preview"></tbody></table></div>
         <p id="skipped" class="hint"></p>

@@ -36,3 +36,16 @@ test('invalid mappings and incomplete rows cannot create contacts', () => {
  assert.deepEqual(contactsFromRows([['Alex','123']],-1,1),[]);
  assert.deepEqual(contactsFromRows([['','123'],['Alex','']],0,1),[]);
 });
+
+test('optional name additions apply once, preserve phones, and exclude incomplete contacts', () => {
+ const rows = [['Alex', '001234'], ['', '+123'], ['Sam', '']];
+ assert.deepEqual(contactsFromRows(rows, 0, 1, ' Team ', ' Office '), [{name:'Team Alex Office',phone:'001234'}]);
+ assert.equal(contactsFromRows(rows, 0, 1, '  ', '')[0].name, 'Alex');
+ assert.equal(contactsFromRows(rows, 0, 1, 'Team')[0].name, 'Team Alex');
+ assert.equal(contactsFromRows(rows, 0, 1, '', 'Office')[0].name, 'Alex Office');
+ assert.equal(contactsFromRows(rows, 0, 1)[0].name, 'Alex');
+ const vcf = toVcf(contactsFromRows(rows, 0, 1, 'Team;', 'Office,'));
+ assert.ok(vcf.includes('FN:Team\\; Alex Office\\,\r\n'));
+ assert.ok(vcf.includes('N:Team\\; Alex Office\\,;;;;\r\n'));
+ assert.ok(vcf.includes('TEL;TYPE=CELL:001234\r\n'));
+});
