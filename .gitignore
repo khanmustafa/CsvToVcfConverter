@@ -80,3 +80,8 @@ Desktop.ini
 
 # Mac desktop service store files
 .DS_Store
+
+# Local tools and generated workbook artifacts
+node_modules/
+outputs/
+.vercel/

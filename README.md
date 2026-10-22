@@ -1,119 +1,59 @@
-# 📱 CSV to VCF Converter
+# CSV to VCF Converter
 
-A free, secure, and privacy-first web application for converting CSV and Excel contact files to vCard (VCF) format. Perfect for phone migrations, contact imports, and business contact management.
+A static website that converts CSV and Excel contact files into vCard 3.0 (`.vcf`) files. No .NET, backend, database, build step, account, or API keys are required.
 
-## 🌟 Features
+## Features
 
-- **🔒 Privacy Protected**: 100% client-side processing - your data never leaves your browser
-- **📊 Multiple Formats**: Supports CSV (.csv) and Excel (.xlsx, .xls) files
-- **🎯 Smart Detection**: Automatically detects and suggests appropriate columns for names and phone numbers
-- **⚡ Instant Results**: Convert thousands of contacts in seconds
-- **📱 Universal Compatibility**: Generated VCF files work with iPhone, Android, Outlook, Gmail, and more
-- **💰 Completely Free**: No registration, no limits, no hidden costs
-- **🎨 Modern Interface**: Clean, responsive design that works on all devices
+- CSV, XLSX, and XLS input, up to 20 MB
+- Worksheet selection for Excel workbooks
+- Automatic suggestions and manual selection for name and phone columns
+- Preview and contact count; rows missing a name or phone are skipped
+- UTF-8 vCard downloads with escaped fields and folded lines
+- Responsive layout and keyboard-accessible controls
+- Files are read in browser memory, never uploaded or persisted by the site
 
-## 🚀 Quick Start
+Use a header row. Store phone numbers as **text** in Excel to preserve leading zeros and plus signs. The converter cannot recover digits or formatting already lost in the source file.
 
-1. **Upload your file**: Choose a CSV or Excel file containing contact information
-2. **Select columns**: Choose which columns contain names and phone numbers
-3. **Download VCF**: Get your converted vCard file instantly
+## Deploy to Vercel
 
-## 📋 Use Cases
+1. Commit and push these changes to your GitHub repository.
+2. In Vercel, choose **Add New → Project** and import this repository.
+3. Set **Framework Preset: Other** and keep **Root Directory** at the repository root.
+4. Leave **Build Command** empty and use **Output Directory: public**. The included `vercel.json` configures this automatically.
+5. Deploy. No environment variables are needed.
 
-- **Phone Migration**: Switch from Android to iPhone or vice versa
-- **Business Contacts**: Convert customer lists, employee directories, vendor contacts
-- **Event Planning**: Import guest lists, attendee information, conference contacts
-- **Contact Backup**: Convert and backup contacts in universal VCF format
-- **CRM Integration**: Import contacts from spreadsheets into contact management systems
+Only `public/` is published. The original ASP.NET application remains in `CsvToVcfConverter/` for reference and is not used by the static website.
 
-## 🛠️ Technical Stack
+## Local preview
 
-- **Backend**: ASP.NET Core 9.0 (C#)
-- **Frontend**: Bootstrap 5, JavaScript, HTML5
-- **Libraries**: 
-  - CsvHelper for CSV processing
-  - EPPlus for Excel file handling
-  - Bootstrap Icons for UI
-- **Architecture**: MVC pattern with service layer
+Open `public/index.html` directly in a modern browser, or serve `public/` with any static web server. For example, with Node.js:
 
-## 🔐 Security & Privacy
-
-- **Zero Data Storage**: Files are processed in memory and immediately deleted
-- **No Server Upload**: Large files processed client-side when possible
-- **No Tracking**: No cookies, analytics, or user tracking
-- **Open Source**: Transparent code you can review and trust
-
-## 🌐 Browser Compatibility
-
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## 📱 Mobile Support
-
-Fully responsive design works perfectly on:
-- iOS (iPhone/iPad)
-- Android phones and tablets
-- Mobile browsers
-
-## 🎯 SEO Optimized
-
-- Clean URLs and semantic HTML
-- Meta tags for social sharing
-- Structured data markup
-- Fast loading times
-- Mobile-first responsive design
-
-## 🔧 Development
-
-### Prerequisites
-- .NET 9.0 SDK
-- Visual Studio 2022 or VS Code
-
-### Setup
-```bash
-git clone [your-repo-url]
-cd CsvToVcfConverter
-dotnet restore
-dotnet run
+```sh
+npx --yes serve public
 ```
 
-### Project Structure
+Node.js is optional for development tools; it is not required by the deployed website.
+
+## Verification
+
+With Node.js installed:
+
+```sh
+node --test tests/converter.test.cjs
+node --check public/app.js
 ```
-CsvToVcfConverter/
-├── Controllers/          # MVC Controllers
-├── Models/              # Data models and ViewModels
-├── Services/            # Business logic services
-├── Views/               # Razor views and layouts
-├── wwwroot/             # Static files (CSS, JS, images)
-└── Program.cs           # Application entry point
-```
 
-## 📈 Performance
+Tests cover CSV quoting and multiline fields, phone-number preservation, XLS/XLSX round trips, worksheet handling, invalid mappings, vCard escaping, and UTF-8 line folding.
 
-- Handles files with 10,000+ contacts
-- Memory-efficient processing
-- Optimized for large datasets
-- Fast conversion algorithms
+## Files
 
-## 🤝 Contributing
+- `public/index.html`: interface
+- `public/styles.css`: responsive styling
+- `public/app.js`: file selection, parsing, preview, and downloads
+- `public/converter.js`: contact filtering and vCard generation
+- `public/vendor/`: bundled SheetJS Community Edition 0.20.3 and its Apache 2.0 license
+- `vercel.json`: static output and security headers
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+SheetJS is bundled locally from https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js; the website does not depend on a third-party CDN at runtime. There are no analytics, cookies, or contact-data network requests. The hosting provider still receives ordinary website requests.
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🆘 Support
-
-Having issues? Check our FAQ section or create an issue in the repository.
-
-## 🔗 Keywords
-
-CSV to VCF, Excel to VCF, vCard converter, contact converter, phone migration, contact import, CSV converter, Excel converter, privacy-first, secure converter, free contact converter, iPhone contacts, Android contacts, contact backup
-
----
-
-**Made with ❤️ for privacy and simplicity**
+The older Docker, Railway, and .NET setup files apply only to the legacy application.

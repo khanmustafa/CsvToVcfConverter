@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Convert CSV and Excel contacts to VCF privately in your browser. Free, no uploads, no account.">
+  <title>CSV to VCF · Contacts, ready to go</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="vendor/xlsx.full.min.js"></script>
+  <script defer src="converter.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header><a class="brand" href="./"><span class="brand-icon">↗</span> CSV to VCF</a><span class="privacy-badge">● Private by design</span></header>
+  <main>
+    <section class="intro"><p class="eyebrow">LESS ADMIN. MORE CONNECTIONS.</p><h1>Your contacts.<br><span>Ready to go.</span></h1><p>Turn a spreadsheet into contacts for your phone.<br>Choose a file, match your columns, and download.</p></section>
+    <section class="converter" aria-label="Contact converter">
+      <div class="card-heading"><h2>Convert your contacts</h2><span>CSV → VCF</span></div>
+      <label class="dropzone" id="dropzone" for="file"><span class="upload-icon" aria-hidden="true">↥</span><strong>Choose a file or drop it here</strong><span>CSV, XLSX or XLS · up to 20 MB</span><input id="file" type="file" accept=".csv,.xlsx,.xls"></label>
+      <p id="status" role="status" aria-live="polite">Your file stays on this device. No uploads, ever.</p>
+      <div id="mapping" hidden>
+        <div class="field" id="sheet-field" hidden><label for="sheet">Worksheet</label><select id="sheet"></select></div>
+        <div class="fields"><div class="field"><label for="name-column">Contact name column</label><select id="name-column"></select></div><div class="field"><label for="phone-column">Phone number column</label><select id="phone-column"></select></div></div>
+        <div class="preview-heading"><h3>Contact preview</h3><span id="count"></span></div>
+        <div class="table-wrap"><table><thead><tr><th>Name</th><th>Phone number</th></tr></thead><tbody id="preview"></tbody></table></div>
+        <p id="skipped" class="hint"></p>
+        <button id="download" type="button">Download VCF <span aria-hidden="true">↓</span></button>
+      </div>
+      <a class="sample" href="sample.csv" download>Try it with a sample file ↗</a>
+    </section>
+    <section class="benefits" aria-label="How it works"><article><span>01</span><h3>Choose your spreadsheet</h3><p>Start with a CSV or Excel file that has a header row.</p></article><article><span>02</span><h3>Match your columns</h3><p>Choose the name and phone fields. Check the preview.</p></article><article><span>03</span><h3>Take your contacts along</h3><p>Import your VCF into iPhone, Android, or a contacts app.</p></article></section>
+    <aside><strong>A little privacy goes a long way.</strong><p>Conversion happens entirely in your browser. Contact data is never sent to a server or saved by this site. Keep phone numbers as text in Excel to preserve + signs and leading zeros.</p></aside>
+  </main>
+  <footer><span>CSV to VCF</span><span>Simple tools. Less friction.</span></footer>
+</body>
+</html>
